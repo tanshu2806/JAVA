@@ -75,3 +75,37 @@ public class StudentDAO {
         }
     }
 }
+
+--------------------------------------------------------------------------------------------------
+
+-- Create the database
+CREATE DATABASE studentdb;
+USE studentdb;
+
+-- Create the students table
+CREATE TABLE students (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    roll_no VARCHAR(20) UNIQUE NOT NULL,
+    course VARCHAR(50) NOT NULL,
+    marks INT NOT NULL
+);
+
+-- Insert sample data (optional)
+INSERT INTO students (name, roll_no, course, marks)
+VALUES
+('Rahul Sharma', 'CS101', 'Computer Science', 85),
+('Priya Patil', 'CS102', 'Information Technology', 90),
+('Amit Kumar', 'CS103', 'Data Science', 78);
+
+-- View all records
+SELECT * FROM students;
+
+-- Update marks for a student
+UPDATE students
+SET marks = 95
+WHERE id = 1;
+
+-- Delete a student record
+DELETE FROM students
+WHERE id = 3;

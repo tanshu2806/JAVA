@@ -1,0 +1,71 @@
+import java.util.Scanner;
+
+class Product {
+    String name;
+    double price;
+    int quantity;
+
+    // Default constructor
+    Product() {
+        this.name = "Unknown";
+        this.price = 0.0;
+        this.quantity = 0;
+    }
+
+    // Parameterized constructor
+    Product(String name, double price, int quantity) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    double getSubtotal() {
+        return price * quantity;
+    }
+
+    void display() {
+        System.out.println(name + " | Price: " + price + " | Qty: " + quantity + " | Subtotal: " + getSubtotal());
+    }
+}
+
+public class ECommerceOrder {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Predefined products using parameterized constructor
+        Product p1 = new Product("Laptop", 50000, 1);
+        Product p2 = new Product("Mouse", 500, 2);
+
+        // User-defined product using default constructor
+        Product p3 = new Product();
+        System.out.print("Enter product name: ");
+        p3.name = sc.next();
+        System.out.print("Enter price: ");
+        p3.price = sc.nextDouble();
+        System.out.print("Enter quantity: ");
+        p3.quantity = sc.nextInt();
+
+        Product[] products = {p1, p2, p3};
+
+        System.out.println("\n===== ORDER INVOICE =====");
+        double total = 0;
+        for (Product p : products) {
+            p.display();
+            total += p.getSubtotal();
+        }
+
+        // Apply discount
+        double discount = 0;
+        if (total > 50000) {
+            discount = total * 0.10; // 10% discount
+            System.out.println("Discount (10%): " + discount);
+        }
+
+        double finalAmount = total - discount;
+        System.out.println("Total: " + total);
+        System.out.println("Amount Payable: " + finalAmount);
+        System.out.println("=========================");
+
+        sc.close();
+    }
+}

@@ -1,0 +1,42 @@
+public class MathOperations {
+
+    // Overloaded power methods
+    static int power(int base, int exp) {
+        int result = 1;
+        for (int i = 0; i < exp; i++) result *= base;
+        return result;
+    }
+
+    static double power(double base, int exp) {
+        double result = 1.0;
+        for (int i = 0; i < exp; i++) result *= base;
+        return result;
+    }
+
+    // Overloaded absolute value methods
+    static int absolute(int n) {
+        return (n < 0) ? -n : n;
+    }
+
+    static float absolute(float n) {
+        return (n < 0) ? -n : n;
+    }
+
+    static double absolute(double n) {
+        return (n < 0) ? -n : n;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("=== User-defined Methods ===");
+        System.out.println("power(2, 3) = " + power(2, 3));
+        System.out.println("power(2.5, 2) = " + power(2.5, 2));
+        System.out.println("absolute(-10) = " + absolute(-10));
+        System.out.println("absolute(-3.14f) = " + absolute(-3.14f));
+        System.out.println("absolute(-7.5) = " + absolute(-7.5));
+
+        System.out.println("\n=== Math Class Methods ===");
+        System.out.println("Math.pow(2, 3) = " + Math.pow(2, 3));
+        System.out.println("Math.abs(-10) = " + Math.abs(-10));
+        System.out.println("Math.abs(-3.14) = " + Math.abs(-3.14));
+    }
+}
